@@ -1,0 +1,31 @@
+{
+  "name": "projeto14-mywallet-back",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brenokamura/projeto14-mywallet-back.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brenokamura/projeto14-mywallet-back/issues"
+  },
+  "homepage": "https://github.com/brenokamura/projeto14-mywallet-back#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "env": "^0.0.2",
+    "express": "^4.18.2",
+    "joi": "^17.7.0",
+    "mongodb": "^4.11.0",
+    "nodemon": "^2.0.20"
+  }
+}
