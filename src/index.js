@@ -14,7 +14,7 @@ app.use(express.json());
 const mongoClient = new MongoClient(process.env.MONGO_URI);
 let db;
 mongoClient.connect().then(() => {
-	db = mongoClient.db("");
+	db = mongoClient.db("my_wallet");
 });
 
 app.listen(5000, () => console.log("Rodando a porta 5000. Sucesso!!!"))
