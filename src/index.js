@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import joi from 'joi';
 import { MongoClient } from "mongodb";
-
+import { signUp} from './authController.js'
 
 dotenv.config();
 const app = express();
@@ -16,5 +16,7 @@ let db;
 mongoClient.connect().then(() => {
 	db = mongoClient.db("my_wallet");
 });
+
+app.post('/signUp/',signUp);
 
 app.listen(5000, () => console.log("Rodando a porta 5000. Sucesso!!!"))

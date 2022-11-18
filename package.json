@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/brenokamura/projeto14-mywallet-back#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "env": "^0.0.2",
