@@ -50,3 +50,26 @@ async function signUp(req, res){
     }   
     }
 export { signUp }
+
+
+async function signIn(req, res){
+    const {email, password } = req.body;
+  
+   
+try{
+    const user = await db.collection("users").findOne({
+        email,
+     });
+     if(!user){
+        return res.sendStatus(404)
+
+     }
+    const token = uuid()
+    mongoClient.collection("users_registre").insertOne({
+        userId: user._id,
+        token,
+    })
+    return res.sendStatus(200).send(token)
+    }
+}
+export { signIn }
