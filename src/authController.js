@@ -70,7 +70,7 @@ async function signIn(req, res){
       return res.send(401);
     }
     const token = uuid()
-    mongoClient.collection("users").insertOne({
+    mongoClient.collection("users_token").insertOne({
         userId: user._id,
         token,
     })
