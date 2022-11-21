@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import joi from 'joi';
 import bcrypt from 'bcrypt';
 import { MongoClient } from "mongodb";
-
+import { v4 as uuid } from 'uuid';
 
 dotenv.config();
 const app = express();
@@ -25,6 +25,11 @@ const userSchema = joi.object({
 
 })
 
+const userSignInSchema = joi.object({
+    email: joi.string().email().required(),
+    password: joi.string().required(),
+
+})
 
 async function signUp(req, res){
     const { name, email, password } = req.body;
@@ -49,13 +54,13 @@ async function signUp(req, res){
         return res.sendStatus(500)
     }   
     }
-export { signUp }
+
 
 
 async function signIn(req, res){
     const {email, password } = req.body;
     
-    const isUser = userSchema.validate({
+    const isUser = userSignInSchema.validate({
         email, password
     })
     if(isUser.error){
@@ -70,12 +75,13 @@ async function signIn(req, res){
       return res.send(401);
     }
     const token = uuid()
-    mongoClient.collection("users_token").insertOne({
+    db.collection("user_token").insertOne({
         userId: user._id,
         token,
     })
-     return res.sendStatus(200).send(token)
+     return res.send(token)
     }catch{
      return res.sendStatus(500)	
-}
-export { signIn }
+}}
+export { signUp, signIn }
+  
