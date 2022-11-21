@@ -29,9 +29,7 @@ const insertSchema = joi.object({
 async function insert(req, res, next) {
     const token = req.headers.authorization?.replace('Bearer ', '');
     const { description, value, type } = req.body;
-    const { session, user } = res.locals;
-
-    console.log(session)
+        
     const isValid = insertSchema.validate({
         value, description, type
     })
@@ -74,7 +72,7 @@ async function listTransictions(req, res) {
     const { description, value, type } = req.body;
     const { user } = res.locals;
 
-    console.log(user)
+    
     const isValid = insertSchema.validate({
         value, description, type
     })
